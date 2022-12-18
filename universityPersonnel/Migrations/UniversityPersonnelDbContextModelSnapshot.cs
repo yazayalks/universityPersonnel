@@ -64,9 +64,6 @@ namespace universityPersonnel.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("EmploymentBookId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("End")
                         .HasColumnType("timestamp with time zone");
 
@@ -78,12 +75,10 @@ namespace universityPersonnel.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Satrt")
+                    b.Property<DateTime>("Start")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmploymentBookId");
 
                     b.ToTable("EmploymentBook");
                 });
@@ -276,10 +271,13 @@ namespace universityPersonnel.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("EmploymentBookId")
+                        .HasColumnType("integer");
+
                     b.Property<int?>("EncouragementId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Floor")
+                    b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -345,6 +343,8 @@ namespace universityPersonnel.Migrations
 
                     b.HasIndex("AcademicTitleId");
 
+                    b.HasIndex("EmploymentBookId");
+
                     b.HasIndex("EncouragementId");
 
                     b.HasIndex("JobTitleId");
@@ -379,13 +379,6 @@ namespace universityPersonnel.Migrations
                     b.ToTable("Subdivision");
                 });
 
-            modelBuilder.Entity("universityPersonnel.Models.EmploymentBook", b =>
-                {
-                    b.HasOne("universityPersonnel.Models.EmploymentBook", null)
-                        .WithMany("EmploymentBooks")
-                        .HasForeignKey("EmploymentBookId");
-                });
-
             modelBuilder.Entity("universityPersonnel.Models.Encouragement", b =>
                 {
                     b.HasOne("universityPersonnel.Models.EncouragementType", null)
@@ -402,41 +395,65 @@ namespace universityPersonnel.Migrations
 
             modelBuilder.Entity("universityPersonnel.Models.Staff", b =>
                 {
-                    b.HasOne("universityPersonnel.Models.AcademicDegree", null)
+                    b.HasOne("universityPersonnel.Models.AcademicDegree", "AcademicDegree")
                         .WithMany("AcademicDegrees")
                         .HasForeignKey("AcademicDegreeId");
 
-                    b.HasOne("universityPersonnel.Models.AcademicTitle", null)
+                    b.HasOne("universityPersonnel.Models.AcademicTitle", "AcademicTitle")
                         .WithMany("AcademicTitles")
                         .HasForeignKey("AcademicTitleId");
 
-                    b.HasOne("universityPersonnel.Models.Encouragement", null)
+                    b.HasOne("universityPersonnel.Models.EmploymentBook", "EmploymentBook")
+                        .WithMany("EmploymentBooks")
+                        .HasForeignKey("EmploymentBookId");
+
+                    b.HasOne("universityPersonnel.Models.Encouragement", "Encouragement")
                         .WithMany("Encouragements")
                         .HasForeignKey("EncouragementId");
 
-                    b.HasOne("universityPersonnel.Models.JobTitle", null)
+                    b.HasOne("universityPersonnel.Models.JobTitle", "JobTitle")
                         .WithMany("JobTitles")
                         .HasForeignKey("JobTitleId");
 
-                    b.HasOne("universityPersonnel.Models.Movement", null)
+                    b.HasOne("universityPersonnel.Models.Movement", "Movement")
                         .WithMany("Movements")
                         .HasForeignKey("MovementId");
 
-                    b.HasOne("universityPersonnel.Models.Penaltie", null)
+                    b.HasOne("universityPersonnel.Models.Penaltie", "Penaltie")
                         .WithMany("Penalties")
                         .HasForeignKey("PenaltieId");
 
-                    b.HasOne("universityPersonnel.Models.PreviousVenture", null)
+                    b.HasOne("universityPersonnel.Models.PreviousVenture", "PreviousVenture")
                         .WithMany("PreviousVentures")
                         .HasForeignKey("PreviousVentureId");
 
-                    b.HasOne("universityPersonnel.Models.Speciality", null)
+                    b.HasOne("universityPersonnel.Models.Speciality", "Speciality")
                         .WithMany("Specialties")
                         .HasForeignKey("SpecialityId");
 
-                    b.HasOne("universityPersonnel.Models.Subdivision", null)
+                    b.HasOne("universityPersonnel.Models.Subdivision", "Subdivision")
                         .WithMany("Subdivisions")
                         .HasForeignKey("SubdivisionId");
+
+                    b.Navigation("AcademicDegree");
+
+                    b.Navigation("AcademicTitle");
+
+                    b.Navigation("EmploymentBook");
+
+                    b.Navigation("Encouragement");
+
+                    b.Navigation("JobTitle");
+
+                    b.Navigation("Movement");
+
+                    b.Navigation("Penaltie");
+
+                    b.Navigation("PreviousVenture");
+
+                    b.Navigation("Speciality");
+
+                    b.Navigation("Subdivision");
                 });
 
             modelBuilder.Entity("universityPersonnel.Models.AcademicDegree", b =>

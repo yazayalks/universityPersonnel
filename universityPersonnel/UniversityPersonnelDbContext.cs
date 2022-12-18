@@ -26,6 +26,7 @@ namespace universityPersonnel
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //optionsBuilder.UseInMemoryDatabase("db");
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=universityPersonne;Username=postgres;Password=6969");
         }
 

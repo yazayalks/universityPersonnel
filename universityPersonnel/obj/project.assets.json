@@ -82,6 +82,22 @@
           "build/net6.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.InMemory/7.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.1"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/7.0.1": {
         "type": "package",
         "dependencies": {
@@ -501,6 +517,20 @@
         "lib/net6.0/Microsoft.EntityFrameworkCore.Design.xml",
         "microsoft.entityframeworkcore.design.7.0.1.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.InMemory/7.0.1": {
+      "sha512": "AnIA16TihjWRTdK5uLcPQ6eAxd2x0hv5etXYUkVN9TdkaH2AuhILnDpdAlh6sTIVVDpygqveHl1rFmtvlcZk2w==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.inmemory/7.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll",
+        "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.xml",
+        "microsoft.entityframeworkcore.inmemory.7.0.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/7.0.1": {
@@ -1072,6 +1102,7 @@
     "net6.0-windows7.0": [
       "Microsoft.EntityFrameworkCore >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.1",
+      "Microsoft.EntityFrameworkCore.InMemory >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.1",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.1"
     ]
@@ -1083,11 +1114,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\universityPersonnel\\universityPersonnel\\universityPersonnel.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\universityPersonnel-main\\universityPersonnel\\universityPersonnel.csproj",
       "projectName": "universityPersonnel",
-      "projectPath": "C:\\Users\\User\\source\\repos\\universityPersonnel\\universityPersonnel\\universityPersonnel.csproj",
+      "projectPath": "C:\\Users\\User\\source\\repos\\universityPersonnel-main\\universityPersonnel\\universityPersonnel.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\universityPersonnel\\universityPersonnel\\obj\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\universityPersonnel-main\\universityPersonnel\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1127,6 +1158,10 @@
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[7.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.InMemory": {
             "target": "Package",
             "version": "[7.0.1, )"
           },

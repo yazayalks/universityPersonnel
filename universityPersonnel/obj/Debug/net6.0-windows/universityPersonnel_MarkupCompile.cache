@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\
+C:\Users\User\source\repos\universityPersonnel-main\universityPersonnel\obj\Debug\net6.0-windows\
 universityPersonnel
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\User\source\repos\universityPersonnel\universityPersonnel\App.xaml
-2-1052782762
+C:\Users\User\source\repos\universityPersonnel-main\universityPersonnel\App.xaml
+3-982945413
 
-26-1353640708
-208-2142660946
-EditStaffWindow.xaml;MainWindow.xaml;
+362030665150
+2091075231177
+MainWindow.xaml;View\AddStaffWindow.xaml;View\EditStaffWindow.xaml;
 
 False
 

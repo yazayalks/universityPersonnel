@@ -15,5 +15,6 @@ namespace universityPersonnel.Models
         public int Order { get; set; }
        
         public List<Staff?> Penalties { get; set; }
+        public PenaltieType? PenaltieType { get; set; }
     }
 }

@@ -7,18 +7,26 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720
-        " Width="1200
-        ">
+        Title="MainWindow" Height="720" Width="1200"
+        FontFamily="Poppins"
+        >
 
 
 
     <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#348EF6"/>
+        <SolidColorBrush x:Key="SecundaryBlueColor" Color="#EFF2FF"/>
+        <SolidColorBrush x:Key="PrimaryTextColor" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="SecundaryTextColor" Color="#BBC1D1"/>
+        <SolidColorBrush x:Key="PrimaryGrayColor" Color="#BBC1D1"/>
+
         <Style TargetType="Button">
             <Setter Property="Margin" Value="20 8 20 8" />
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="30" />
         </Style>
+
+      
 
         <!--Create list of enumeration values-->
         <ObjectDataProvider x:Key="myEnum" MethodName="GetValues"     ObjectType="{x:Type sys:Enum}">
@@ -27,50 +35,317 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
+    <Grid Background="{DynamicResource PrimaryBlueColor}">
+        <Border CornerRadius="10"
+                        Padding="30"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+            <TabControl>
+                <TabItem Header="Сотрудники">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="111*"/>
+                            <ColumnDefinition Width="29*"/>
+                            <ColumnDefinition Width="1045*"/>
+                            <ColumnDefinition Width="9*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="staffGrid" Margin="25,25,25,50" Grid.ColumnSpan="3">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Surname}" Header="Фамилия" Width="110"/>
+                                <DataGridTextColumn Binding="{Binding Middlename}" Header="Отчество" Width="70"/>
+
+                                <DataGridTextColumn Binding="{Binding Gender}" Header="Пол" Width="30"/>
+                                <DataGridTextColumn Binding="{Binding PlaceBirth}" Header="Место рождения" Width="110"/>
+                                <DataGridTextColumn Binding="{Binding HomeAddress}" Header="Домашний адрес" Width="70"/>
+
+                                <DataGridTextColumn Binding="{Binding Phone}" Header="Телефон" Width="30"/>
+                                <DataGridTextColumn Binding="{Binding Photo}" Header="Фото" Width="110"/>
+                                <DataGridTextColumn Binding="{Binding Education}" Header="Образование" Width="70"/>
+
+                                <DataGridTextColumn Binding="{Binding PassportId}" Header="Серия и номер паспорта" Width="110"/>
+                                <DataGridTextColumn Binding="{Binding PassportIssuedBy}" Header="Паспорт выдан" Width="30"/>
 
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="397*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="staffGrid" Margin="23,22,25,138">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Surname}" Header="Фамилия" Width="110"/>
-                <DataGridTextColumn Binding="{Binding Middlename}" Header="Отчество" Width="70"/>
-
-                <DataGridTextColumn Binding="{Binding Floor}" Header="Пол" Width="30"/>
-                <DataGridTextColumn Binding="{Binding PlaceBirth}" Header="Место рождения" Width="110"/>
-                <DataGridTextColumn Binding="{Binding HomeAddress}" Header="Домашний адрес" Width="70"/>
-
-                <DataGridTextColumn Binding="{Binding Phone}" Header="Телефон" Width="30"/>
-                <DataGridTextColumn Binding="{Binding Photo}" Header="Фото" Width="110"/>
-                <DataGridTextColumn Binding="{Binding Education}" Header="Образование" Width="70"/>
-
-                <DataGridTextColumn Binding="{Binding PassportId}" Header="Серия и номер паспорта" Width="110"/>
-                <DataGridTextColumn Binding="{Binding PassportIssuedBy}" Header="Паспорт выдан" Width="30"/>
+                                <DataGridTextColumn Binding="{Binding DateIssuePassport}" Header="Дата получения паспорта" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding DateBirth}" Header="Дата рождения" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding YearGraduation}" Header="Год окончания учебногог заведения" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding AcademicDegree.Degree}" Header="Учёная степень" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding AcademicTitle.Title}" Header="Учёная звание" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding JobTitle.Title}" Header="Должность" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding Speciality.Name}" Header="Специальность" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding Subdivision.Name}" Header="Подразделение" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding Encouragement.Id}" Header="Поощрения" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding Movement.Id}" Header="Перемещения" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding Penaltie.Id}" Header="Взыскания" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding PreviousVenture.Id}" Header="Предыдущее предпреятие" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding EmploymentBook.Id}" Header="Трудовая книжка" Width="70"/>
 
 
-                <DataGridTextColumn Binding="{Binding DateIssuePassport}" Header="Дата получения паспорта" Width="70"/>
-                <DataGridTextColumn Binding="{Binding DateBirth}" Header="Дата рождения" Width="70"/>
-                <DataGridTextColumn Binding="{Binding YearGraduation}" Header="Год окончания учебногог заведения" Width="70"/>
-                <DataGridTextColumn Binding="{Binding AcademicDegree.Degree}" Header="Учёная степень" Width="70"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" Margin="25,523,522,0"  Width="Auto" Grid.ColumnSpan="3" Height="46" VerticalAlignment="Top">
+                            <Button x:Name="addStaffButton" Content="Добавить" Click="addStaffButton_Click" Width="106" />
+           
+                            <Button x:Name="editStaffButton" Content="Редактировать" Click="editStaffButton_Click" Width="106" />
+                            <Button x:Name="deleteStaffButton" Content="Удалить" Click="deleteButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+
+                </TabItem>
+                <TabItem Header="Подразделения" Style="{DynamicResource TabItemStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="SubdivisionGrid" Margin="25,25,25,50" Grid.ColumnSpan="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Имя" Width="500"/>
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,498,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                            <Button x:Name="saveSubdivisionButton" Content="Сохранить" Click="SaveSubdivisionButton_Click" Width="106" />
+                            <Button x:Name="deleteSubdivisionButton" Content="Удалить" Click="DeleteSubdivisionButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Специальности">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="SpecialityGrid" Margin="25,25,25,50" Grid.ColumnSpan="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="500"/>
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,498,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                            <Button x:Name="saveSpecialityButton" Content="Сохранить" Click="SaveSpecialityButton_Click" Width="106" />
+                            <Button x:Name="deleteSpecialityButton" Content="Удалить" Click="DeleteSpecialityButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Предыдущее место работы">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="PreviousVentureGrid" Margin="25,25,25,50">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Address}" Header="Адрес" Width="300"/>
+                                <DataGridTextColumn Binding="{Binding Phone}" Header="Телефон" Width="100"/>
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,498,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                            <Button x:Name="savePreviousVentureButton" Content="Сохранить" Click="SavePreviousVentureButton_Click" Width="106" />
+                            <Button x:Name="deletePreviousVentureButton" Content="Удалить" Click="DeletePreviousVentureButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Взыскания">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="PenaltieGrid" Margin="25,25,25,50">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Date}" Header="Дата" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Order}" Header="Договор" Width="300"/>
+                                <!--<DataGridTextColumn Binding="{Binding PenaltieType.Name}" Header="Тип" Width="100"/>-->
+                                <!--TODO-->
+                                <DataGridComboBoxColumn   Header="Тип"
+     
+                      Width="120"  
+                      ItemsSource="{Binding Path=PenaltieTypes}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Name"
+                      SelectedItemBinding="{Binding Path=Penaltie.PenaltieType}">
+                              
+                                   </DataGridComboBoxColumn>  
+                                
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,498,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                            <Button x:Name="savePenaltieVentureButton" Content="Сохранить" Click="SavePenaltieButton_Click" Width="106" />
+                            <Button x:Name="deletePenaltieVentureButton" Content="Удалить" Click="DeletePenaltieButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Должности">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="JobTitleGrid" Margin="25,25,25,50" Grid.ColumnSpan="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Title}" Header="Название" />
+               
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,498,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                            <Button x:Name="saveJobTitleButton" Content="Сохранить" Click="SaveJobTitleButton_Click" Width="106" />
+                            <Button x:Name="deleteJobTitleButton" Content="Удалить" Click="DeleteJobTitleButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Перемещения">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="MovementGrid" Margin="25,25,25,50" Grid.ColumnSpan="2">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Cause}" Header="Название" />
+                                <DataGridTextColumn Binding="{Binding Date}" Header="Дата" />
+                                <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
+
+                                
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,498,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                            <Button x:Name="saveMovementButton" Content="Сохранить" Click="SaveMovementButton_Click" Width="106" />
+                            <Button x:Name="deleteMovementButton" Content="Удалить" Click="DeleteMovementButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Трудовые книжки">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="EmploymentBookGrid" Margin="25,25,25,50" Grid.ColumnSpan="4">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding JobTitle}" Header="Должность" />
+                                <DataGridTextColumn Binding="{Binding Start}" Header="Начало работы" />
+                                <DataGridTextColumn Binding="{Binding End}" Header="Конец работы" />
+                                <DataGridTextColumn Binding="{Binding ReasonDismissal}" Header="Причина увольнения" />
 
 
 
 
-            </DataGrid.Columns>
-        </DataGrid>
 
-        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,590,0,27" Width="438">
-            <Button x:Name="updateButton" Content="Обновить" Click="updateButton_Click" />
-            <Button x:Name="editButton" Content="Редактировать" Click="editButton_Click" Width="106" />
-            <Button x:Name="deleteButton" Content="Удалить" Click="deleteButton_Click" Width="106" />
-        </StackPanel>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,498,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                            <Button x:Name="saveEmploymentBookButton" Content="Сохранить" Click="SaveEmploymentBookButton_Click" Width="106" />
+                            <Button x:Name="deleteEmploymentBookButton" Content="Удалить" Click="DeleteEmploymentBookButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Поощрения">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="EncouragementGrid" Margin="25,25,25,50" Grid.ColumnSpan="4">
+                            <DataGrid.Columns>
+                              
+                                <DataGridTextColumn Binding="{Binding Date}" Header="Дата" />
+                                <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
+                                <!--<DataGridTextColumn Binding="{Binding EncouragementType.Name}" Header="Поощрение" />-->
+
+                            
+                                <!--TODO-->
+                                <DataGridComboBoxColumn  Header="Поощрение"
+     
+                      Width="120"  
+                      ItemsSource="{Binding Path=EncouragementTypes}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Name"
+                      SelectedItemBinding="{Binding Path=Encouragement.EncouragementTypes}">
+
+                                </DataGridComboBoxColumn>
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,498,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                            <Button x:Name="saveEncouragementButton" Content="Сохранить" Click="SaveEncouragementButton_Click" Width="106" />
+                            <Button x:Name="deleteEncouragementButton" Content="Удалить" Click="DeleteEncouragementButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Border>
     </Grid>
 </Window>

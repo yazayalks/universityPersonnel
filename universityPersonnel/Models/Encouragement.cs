@@ -15,5 +15,7 @@ namespace universityPersonnel.Models
         public int Order { get; set; }
       
         public List<Staff?> Encouragements { get; set; }
+        public EncouragementType? EncouragementType { get; set; }
+
     }
 }

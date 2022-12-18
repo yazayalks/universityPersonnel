@@ -11,11 +11,11 @@ namespace universityPersonnel.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public DateTime Satrt { get; set; }
+        public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public string JobTitle { get; set; }
         public string ReasonDismissal { get; set; }
-        public List<EmploymentBook> EmploymentBooks { get; set; }
+        public List<Staff?> EmploymentBooks { get; set; }
     }
     
 }
