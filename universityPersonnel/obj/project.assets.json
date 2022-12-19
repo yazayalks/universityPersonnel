@@ -1114,11 +1114,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\universityPersonnel-main\\universityPersonnel\\universityPersonnel.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\universityPersonnel\\universityPersonnel\\universityPersonnel.csproj",
       "projectName": "universityPersonnel",
-      "projectPath": "C:\\Users\\User\\source\\repos\\universityPersonnel-main\\universityPersonnel\\universityPersonnel.csproj",
+      "projectPath": "C:\\Users\\User\\source\\repos\\universityPersonnel\\universityPersonnel\\universityPersonnel.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\universityPersonnel-main\\universityPersonnel\\obj\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\universityPersonnel\\universityPersonnel\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

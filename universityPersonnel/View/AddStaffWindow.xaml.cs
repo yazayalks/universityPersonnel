@@ -21,7 +21,12 @@ public partial class AddStaffWindow : Window
     public List<string> Educations { get; set; } = new() { "Среднее", "Высшее" };
     public List<AcademicDegree> AcademicDegrees { get; set; }
 
- 
+    public List<AcademicTitle> AcademicTitles { get; set; }
+    public List<JobTitle> JobTitles { get; set; }
+    public List<Speciality> Specialties { get; set; }   
+    public List<Subdivision> Subdivisions { get; set; }
+
+
 
     private readonly UniversityPersonnelDbContext dbContext;
     
@@ -32,7 +37,11 @@ public partial class AddStaffWindow : Window
       
 
         AcademicDegrees = dbContext.AcademicDegree.ToList();
-        InitializeComponent();
+        AcademicTitles = dbContext.AcademicTitle.ToList();
+        JobTitles = dbContext.JobTitle.ToList();
+        Specialties = dbContext.Speciality.ToList();
+        Subdivisions = dbContext.Subdivision.ToList();
+        InitializeComponent(); 
         this.DataContext = this;
 
         LoadPhoto(Staff.Photo ?? ProfilePhoto.img);

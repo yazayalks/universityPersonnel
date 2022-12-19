@@ -90,6 +90,47 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
+                <Label Content="Ученое звание" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <ComboBox HorizontalAlignment="Left"  
+                      VerticalAlignment="Center"
+                      Width="120"  
+                      ItemsSource="{Binding Path=AcademicTitles}"
+                      DisplayMemberPath="Title"
+                      SelectedValuePath="Title"
+                      SelectedItem="{Binding Path=Staff.AcademicTitle}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Должность" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <ComboBox HorizontalAlignment="Left"  
+                      VerticalAlignment="Center"
+                      Width="120"  
+                      ItemsSource="{Binding Path=JobTitles}"
+                      DisplayMemberPath="Title"
+                      SelectedValuePath="Title"
+                      SelectedItem="{Binding Path=Staff.JobTitle}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Специальность" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <ComboBox HorizontalAlignment="Left"  
+                      VerticalAlignment="Center"
+                      Width="120"  
+                      ItemsSource="{Binding Path=Specialties}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Name"
+                      SelectedItem="{Binding Path=Staff.Speciality}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Подразделение" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <ComboBox HorizontalAlignment="Left"  
+                      VerticalAlignment="Center"
+                      Width="120"  
+                      ItemsSource="{Binding Path=Subdivisions}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Name"
+                      SelectedItem="{Binding Path=Staff.Subdivision}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
                 <Button Content="Сохранить" Click="saveButton_Click" Width="106" />
                 <Button Content="Выбрать фото" Click="photoButton_Click" Width="106" />
             </StackPanel>

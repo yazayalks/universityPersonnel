@@ -30,17 +30,22 @@ namespace universityPersonnel
         public Encouragement Encouragement { get; set; }
         public List<PenaltieType> PenaltieTypes { get; set; }
         public List<EncouragementType> EncouragementTypes { get; set; }
+        public List<Penaltie> Penalties { get; set; }
         public MainWindow()
         {
             db = new UniversityPersonnelDbContext();
             PenaltieTypes = db.PenaltieType.ToList();
             EncouragementTypes = db.EncouragementType.ToList();
+            Penalties = db.Penaltie.Include(x => x.PenaltieType).ToList();
+
+            this.DataContext = this;
             InitializeComponent();
-          
+            PenaltieTypesColumn.ItemsSource = PenaltieTypes;
+
             RefreshStaff();
             RefreshSubdivision();
             RefreshSpeciality();
-            RefreshPenaltie();
+            //RefreshPenaltie();
             RefreshJobTitle();
             RefreshMovement();
             RefreshEmploymentBook();
@@ -50,7 +55,7 @@ namespace universityPersonnel
             SubdivisionGrid.ItemsSource = db.Subdivision.Local.ToBindingList(); // устанавливаем привязку к кэшу
             SpecialityGrid.ItemsSource = db.Speciality.Local.ToBindingList(); // устанавливаем привязку к кэшу
             PreviousVentureGrid.ItemsSource = db.PreviousVenture.Local.ToBindingList(); // устанавливаем привязку к кэшу
-            PenaltieGrid.ItemsSource = db.Penaltie.Local.ToBindingList(); // устанавливаем привязку к кэшу
+            //PenaltieGrid.ItemsSource = db.Penaltie.Local.ToBindingList(); // устанавливаем привязку к кэшу
             JobTitleGrid.ItemsSource = db.JobTitle.Local.ToBindingList(); // устанавливаем привязку к кэшу
             MovementGrid.ItemsSource = db.Movement.Local.ToBindingList(); // устанавливаем привязку к кэшу
             EmploymentBookGrid.ItemsSource = db.EmploymentBook.Local.ToBindingList(); // устанавливаем привязку к кэшу

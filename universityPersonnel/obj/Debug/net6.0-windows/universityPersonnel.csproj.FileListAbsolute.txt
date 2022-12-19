@@ -42,8 +42,6 @@ C:\Users\User\source\repos\universityPersonnel\universityPersonnel\bin\Debug\net
 C:\Users\User\source\repos\universityPersonnel\universityPersonnel\bin\Debug\net6.0-windows\System.Text.Json.dll
 C:\Users\User\source\repos\universityPersonnel\universityPersonnel\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\EditStaffWindow.g.cs
-C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\EditStaffWindow.baml
 C:\Users\1kvin\Desktop\universityPersonnel-main\universityPersonnel\bin\Debug\net6.0-windows\universityPersonnel.exe
 C:\Users\1kvin\Desktop\universityPersonnel-main\universityPersonnel\bin\Debug\net6.0-windows\universityPersonnel.deps.json
 C:\Users\1kvin\Desktop\universityPersonnel-main\universityPersonnel\bin\Debug\net6.0-windows\universityPersonnel.runtimeconfig.json
@@ -142,3 +140,8 @@ C:\Users\User\source\repos\universityPersonnel-main\universityPersonnel\obj\Debu
 C:\Users\User\source\repos\universityPersonnel-main\universityPersonnel\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\User\source\repos\universityPersonnel-main\universityPersonnel\obj\Debug\net6.0-windows\View\EditStaffWindow.g.cs
 C:\Users\User\source\repos\universityPersonnel-main\universityPersonnel\obj\Debug\net6.0-windows\View\EditStaffWindow.baml
+C:\Users\User\source\repos\universityPersonnel\universityPersonnel\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\View\AddStaffWindow.g.cs
+C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\View\EditStaffWindow.g.cs
+C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\View\AddStaffWindow.baml
+C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\View\EditStaffWindow.baml

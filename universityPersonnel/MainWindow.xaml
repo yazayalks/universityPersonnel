@@ -26,7 +26,7 @@
             <Setter Property="Height" Value="30" />
         </Style>
 
-      
+
 
         <!--Create list of enumeration values-->
         <ObjectDataProvider x:Key="myEnum" MethodName="GetValues"     ObjectType="{x:Type sys:Enum}">
@@ -92,7 +92,7 @@
 
                         <StackPanel Orientation="Horizontal" Margin="25,523,522,0"  Width="Auto" Grid.ColumnSpan="3" Height="46" VerticalAlignment="Top">
                             <Button x:Name="addStaffButton" Content="Добавить" Click="addStaffButton_Click" Width="106" />
-           
+
                             <Button x:Name="editStaffButton" Content="Редактировать" Click="editStaffButton_Click" Width="106" />
                             <Button x:Name="deleteStaffButton" Content="Удалить" Click="deleteButton_Click" Width="106" />
                         </StackPanel>
@@ -189,25 +189,22 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="PenaltieGrid" Margin="25,25,25,50">
+
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="PenaltieGrid" Margin="25,25,25,50" ItemsSource="{Binding Penalties}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Date}" Header="Дата" Width="100"/>
                                 <DataGridTextColumn Binding="{Binding Order}" Header="Договор" Width="300"/>
                                 <!--<DataGridTextColumn Binding="{Binding PenaltieType.Name}" Header="Тип" Width="100"/>-->
                                 <!--TODO-->
-                                <DataGridComboBoxColumn   Header="Тип"
+                                <DataGridComboBoxColumn x:Name="PenaltieTypesColumn"  Header="Тип"
      
                       Width="120"  
-                      ItemsSource="{Binding Path=PenaltieTypes}"
                       DisplayMemberPath="Name"
                       SelectedValuePath="Name"
-                      SelectedItemBinding="{Binding Path=Penaltie.PenaltieType}">
-                              
-                                   </DataGridComboBoxColumn>  
-                                
+                                             
+                      SelectedItemBinding="{Binding Path=PenaltieType}">
 
-
-
+                                </DataGridComboBoxColumn>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -231,7 +228,7 @@
                         <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="JobTitleGrid" Margin="25,25,25,50" Grid.ColumnSpan="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Title}" Header="Название" />
-               
+
 
 
 
@@ -261,7 +258,7 @@
                                 <DataGridTextColumn Binding="{Binding Date}" Header="Дата" />
                                 <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
 
-                                
+
 
 
                             </DataGrid.Columns>
@@ -317,12 +314,12 @@
                         </Grid.RowDefinitions>
                         <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="EncouragementGrid" Margin="25,25,25,50" Grid.ColumnSpan="4">
                             <DataGrid.Columns>
-                              
+
                                 <DataGridTextColumn Binding="{Binding Date}" Header="Дата" />
                                 <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
                                 <!--<DataGridTextColumn Binding="{Binding EncouragementType.Name}" Header="Поощрение" />-->
 
-                            
+
                                 <!--TODO-->
                                 <DataGridComboBoxColumn  Header="Поощрение"
      
@@ -330,7 +327,7 @@
                       ItemsSource="{Binding Path=EncouragementTypes}"
                       DisplayMemberPath="Name"
                       SelectedValuePath="Name"
-                      SelectedItemBinding="{Binding Path=Encouragement.EncouragementTypes}">
+                      SelectedItemBinding="{Binding Path=Encouragement.EncouragementType}">
 
                                 </DataGridComboBoxColumn>
 

@@ -31,8 +31,13 @@ namespace universityPersonnel
         public List<string> Genders { get; set; } = new() { "М", "Ж" };
         public List<string> Educations { get; set; } = new() { "Среднее", "Высшее" };
         public List<AcademicDegree> AcademicDegrees { get; set; }
-
+        public List<AcademicTitle> AcademicTitles { get; set; }
+        public List<JobTitle> JobTitles { get; set; }
+        public List<Speciality> Specialties { get; set; }
+        public List<Subdivision> Subdivisions { get; set; }
        
+
+
         private readonly UniversityPersonnelDbContext dbContext;
 
         public EditStaffWindow(Staff selectedStaff, UniversityPersonnelDbContext dbContext)
@@ -40,8 +45,14 @@ namespace universityPersonnel
             this.dbContext = dbContext;
             this.Staff = selectedStaff;
             AcademicDegrees = dbContext.AcademicDegree.ToList();
-            InitializeComponent();
+            AcademicTitles = dbContext.AcademicTitle.ToList();
+            JobTitles = dbContext.JobTitle.ToList();
+            Specialties = dbContext.Speciality.ToList();
+            Subdivisions = dbContext.Subdivision.ToList();
+        
             this.DataContext = this;
+            InitializeComponent();
+           
             LoadPhoto(Staff.Photo ?? ProfilePhoto.img);
             //Не могу из SelectedItems вставить поле в форму
             //nameTextBox.Text = a.Name;
