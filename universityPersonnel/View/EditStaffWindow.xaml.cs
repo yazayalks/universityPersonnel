@@ -65,9 +65,77 @@ namespace universityPersonnel
             }
         }
 
-        public EditStaffWindow(Staff selectedStaff, UniversityPersonnelDbContext dbContext)
+        public EditStaffWindow(Staff selectedStaff, UniversityPersonnelDbContext dbContext, User user)
         {
             InitializeComponent();
+
+            var AccessRights = dbContext.AccessRight
+               .Where(x => x.User.Id == user.Id)
+               .ToList();
+
+            var penaltieAcess = AccessRights.Single(x => x.NameForm == dbContext.NameForm.Single(x => x.Name == "PenaltieForm"));
+            var encouragementAcess = AccessRights.Single(x => x.NameForm == dbContext.NameForm.Single(x => x.Name == "EncouragementForm"));
+            var employmentBookAcess = AccessRights.Single(x => x.NameForm == dbContext.NameForm.Single(x => x.Name == "EmploymentBookForm"));
+            var previousVentureAcess = AccessRights.Single(x => x.NameForm == dbContext.NameForm.Single(x => x.Name == "PreviousVentureForm"));
+            var movementAcess = AccessRights.Single(x => x.NameForm == dbContext.NameForm.Single(x => x.Name == "MovementForm"));
+
+
+            if (!penaltieAcess.Read)
+            {
+                penaltieItem.Visibility = System.Windows.Visibility.Hidden;
+                penaltieItemGrid.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            PenaltieGrid.IsReadOnly = !penaltieAcess.Edit;
+            PenaltieGrid.CanUserAddRows = penaltieAcess.Write;
+            PenaltieGrid.CanUserDeleteRows = penaltieAcess.Delete;
+            deletePenaltieVentureButton.IsEnabled = penaltieAcess.Delete;
+
+            if (!encouragementAcess.Read)
+            {
+                EncouragementItem.Visibility = System.Windows.Visibility.Hidden;
+                EncouragementItemGrid.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            EncouragementGrid.IsReadOnly = !encouragementAcess.Edit;
+            EncouragementGrid.CanUserAddRows = encouragementAcess.Write;
+            deleteEncouragementButton.IsEnabled = encouragementAcess.Delete;
+            EncouragementGrid.CanUserDeleteRows = encouragementAcess.Delete;
+
+            if (!movementAcess.Read)
+            {
+                MovementItem.Visibility = System.Windows.Visibility.Hidden;
+                MovementItemGrid.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            MovementGrid.IsReadOnly = !movementAcess.Edit;
+            MovementGrid.CanUserAddRows = movementAcess.Write;
+            deleteMovementButton.IsEnabled = movementAcess.Delete;
+            MovementGrid.CanUserDeleteRows = movementAcess.Delete;
+
+            if (!employmentBookAcess.Read)
+            {
+                EmploymentBookItem.Visibility = System.Windows.Visibility.Hidden;
+                EmploymentBookItemGrid.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            EmploymentBookGrid.IsReadOnly = !employmentBookAcess.Edit;
+            EmploymentBookGrid.CanUserAddRows = employmentBookAcess.Write;
+            deleteEmploymentBookButton.IsEnabled = employmentBookAcess.Delete;
+            EmploymentBookGrid.CanUserDeleteRows = employmentBookAcess.Delete;
+
+            if (!previousVentureAcess.Read)
+            {
+                PreviousVentureItem.Visibility = System.Windows.Visibility.Hidden;
+                PreviousVentureItemGrid.Visibility = System.Windows.Visibility.Hidden;
+            }
+
+            PreviousVentureGrid.IsReadOnly = !previousVentureAcess.Edit;
+            PreviousVentureGrid.CanUserAddRows = previousVentureAcess.Write;
+            deletePreviousVentureButton.IsEnabled = previousVentureAcess.Delete;
+            PreviousVentureGrid.CanUserDeleteRows = employmentBookAcess.Delete;
+
+
             this.dbContext = dbContext;
             this.Staff = selectedStaff;
             AcademicDegrees = dbContext.AcademicDegree.ToList();

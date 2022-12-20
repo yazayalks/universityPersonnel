@@ -146,3 +146,5 @@ C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net
 C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\View\EditStaffWindow.baml
 C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\LoginWindow.g.cs
 C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\LoginWindow.baml
+C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\EditUserWindow.g.cs
+C:\Users\User\source\repos\universityPersonnel\universityPersonnel\obj\Debug\net6.0-windows\EditUserWindow.baml

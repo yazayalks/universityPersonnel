@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:universityPersonnel"
         mc:Ignorable="d"
-        Title="EditStaffWindow" Height="800" Width="1227">
+        Title="EditStaffWindow" Height="800" Width="1227"
+        WindowStartupLocation="CenterScreen">
     <StackPanel Orientation="Horizontal">
 
         <StackPanel Width="287">
@@ -146,8 +147,8 @@
         </StackPanel>
         <StackPanel>
             <TabControl Height="288" Width="544">
-                <TabItem Header="Взыскания">
-                    <Grid>
+                <TabItem x:Name="penaltieItem" Header="Взыскания">
+                    <Grid x:Name="penaltieItemGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="397*"/>
                             <ColumnDefinition Width="3*"/>
@@ -159,7 +160,7 @@
 
                         <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="PenaltieGrid" ItemsSource="{Binding Penalties}" Height="220" VerticalAlignment="Center" Margin="10,0,10,0">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" Width="100"/>
+                                <DataGridTextColumn  Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" Width="100"/>
                                 <DataGridTextColumn Binding="{Binding Order}" Header="Договор" Width="100"/>
                                 <!--<DataGridTextColumn Binding="{Binding PenaltieType.Name}" Header="Тип" Width="100"/>-->
                                 <!--TODO-->
@@ -178,8 +179,8 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem  Header="Перемещения">
-                    <Grid>
+                <TabItem  x:Name="MovementItem" Header="Перемещения">
+                    <Grid  x:Name="MovementItemGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="397*"/>
                             <ColumnDefinition Width="3*"/>
@@ -208,8 +209,8 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Поощрения">
-                    <Grid>
+                <TabItem x:Name="EncouragementItem" Header="Поощрения">
+                    <Grid x:Name="EncouragementItemGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="397*"/>
                             <ColumnDefinition Width="3*"/>
@@ -224,7 +225,7 @@
 
                                 <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" />
                                 <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
-                                <DataGridComboBoxColumn  Header="Поощрение"  x:Name="EncouragementTypesColumn"
+                                <DataGridComboBoxColumn Header="Поощрение"  x:Name="EncouragementTypesColumn"
      
                       Width="120"  
          
@@ -247,8 +248,8 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Трудовая книжка">
-                    <Grid>
+                <TabItem  x:Name="EmploymentBookItem" Header="Трудовая книжка">
+                    <Grid x:Name="EmploymentBookItemGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="397*"/>
                             <ColumnDefinition Width="3*"/>
@@ -277,8 +278,8 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Предыдущее место работы">
-                    <Grid>
+                <TabItem x:Name="PreviousVentureItem" Header="Предыдущее место работы">
+                    <Grid x:Name="PreviousVentureItemGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="397*"/>
                             <ColumnDefinition Width="3*"/>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\User\source\repos\universityPersonnel\universityPersonnel\App.xaml
-41688323067
+51834307641
 
-72-719400608
+73732212450
 209-521280737
-LoginWindow.xaml;MainWindow.xaml;View\AddStaffWindow.xaml;View\EditStaffWindow.xaml;
+EditUserWindow.xaml;LoginWindow.xaml;MainWindow.xaml;View\AddStaffWindow.xaml;View\EditStaffWindow.xaml;
 
 False
 

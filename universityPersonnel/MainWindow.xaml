@@ -9,6 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1200"
         FontFamily="Poppins"
+        WindowStartupLocation="CenterScreen"
         >
 
 
@@ -36,8 +37,8 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
             <TabControl>
-                <TabItem Header="Сотрудники">
-                    <Grid>
+                <TabItem x:Name ="staffItem" Header="Сотрудники">
+                    <Grid x:Name ="staffItemGrid">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="111*"/>
@@ -75,22 +76,28 @@
                                 <DataGridTextColumn Binding="{Binding JobTitle.Title}" Header="Должность" Width="70"/>
                                 <DataGridTextColumn Binding="{Binding Speciality.Name}" Header="Специальность" Width="70"/>
                                 <DataGridTextColumn Binding="{Binding Subdivision.Name}" Header="Подразделение" Width="70"/>
-                        
+
 
 
                             </DataGrid.Columns>
                         </DataGrid>
 
-                        <StackPanel Orientation="Horizontal" Margin="25,523,522,0"  Width="Auto" Grid.ColumnSpan="3" Height="46" VerticalAlignment="Top">
-                            <Button  x:Name="addStaffButton" Content="Добавить" Click="AddStaffButton_Click" Width="106" />
+                        <StackPanel Orientation="Horizontal" Margin="25,523,304,0"  Width="Auto" Grid.ColumnSpan="3" Height="46" VerticalAlignment="Top">
+                            <Button x:Name="addStaffButton" Content="Добавить" Click="AddStaffButton_Click" Width="106" />
                             <Button x:Name="editStaffButton" Content="Редактировать" Click="EditStaffButton_Click" Width="106" />
                             <Button x:Name="deleteStaffButton" Content="Удалить" Click="DeleteStaffButton_Click" Width="106" />
+
+                            <Label Content="Поиск"  VerticalAlignment="Center" Width="50"/>
+                            <TextBox x:Name="searchTextBox"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center"  Width="120" />
+                            <Button x:Name="searchStaffButton" Content="Искать" Click="searchStaffButton_Click" Width="106" />
                         </StackPanel>
+
+
                     </Grid>
 
                 </TabItem>
-                <TabItem Header="Подразделения" Style="{DynamicResource TabItemStyle}">
-                    <Grid>
+                <TabItem x:Name="SubdivisionItem" Header="Подразделения" Style="{DynamicResource TabItemStyle}">
+                    <Grid x:Name="SubdivisionItemGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="397*"/>
                             <ColumnDefinition Width="3*"/>
@@ -99,7 +106,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="SubdivisionGrid" Margin="25,25,25,50" Grid.ColumnSpan="1">
+                        <DataGrid  AutoGenerateColumns="False" x:Name="SubdivisionGrid" Margin="25,25,25,50" Grid.ColumnSpan="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Name}" Header="Имя" Width="500"/>
 
@@ -115,8 +122,8 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Специальности">
-                    <Grid>
+                <TabItem x:Name="SpecialityItem" Header="Специальности">
+                    <Grid x:Name="SpecialityItemGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="397*"/>
                             <ColumnDefinition Width="3*"/>
@@ -145,8 +152,8 @@
 
 
 
-                <TabItem Header="Должности">
-                    <Grid>
+                <TabItem x:Name="JobTitleItem" Header="Должности">
+                    <Grid x:Name="JobTitleItemGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="397*"/>
                             <ColumnDefinition Width="3*"/>
@@ -171,6 +178,94 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
+
+                <TabItem x:Name="RecoverPasswordItem" Header="Изменить пароль">
+                    <Grid x:Name="RecoverPasswordItemGrid">
+
+
+                        <StackPanel Margin="0,5,0,0" Orientation="Vertical">
+                            <StackPanel HorizontalAlignment="Center">
+                                <Label Content="Изменение пароля пользователя" Width="227" FontWeight="ExtraBold"/>
+                                <TextBlock>
+                          Введите старый пароль, новый, и его подтверждение для восстановления
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="0,5,0,0" HorizontalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Старый пароль"  VerticalAlignment="Center" Width="160"/>
+                                    <PasswordBox x:Name="OldPasswordTexBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="140" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Новый паролль"  VerticalAlignment="Center" Width="160"/>
+                                    <PasswordBox x:Name="NewPasswordTexBox" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="140" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Повтор нового пароля"  VerticalAlignment="Center" Width="160"/>
+                                    <PasswordBox x:Name="ConfirmPasswordTexBox"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="140" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,25,0,0" Width="Auto" Height="50" VerticalAlignment="Top">
+                                <Button x:Name="recoverPasswordButton" Content="Изменить пароль" Click="recoverPasswordButton_Click" Width="106" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                
+                <TabItem Header="Справка">
+                    <Grid Height="400">
+                        <StackPanel>
+                            <Label Content="Как работает программа:" Width="168" FontWeight="ExtraBold"/>
+                            <TextBlock>
+                            Мы можем управлять сотрудниками <LineBreak/>
+                            Есть права доступа<LineBreak/>
+                            Есть возможность для восстановления пароля<LineBreak/>
+                            ...
+
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                
+                <TabItem  x:Name="AdminItem" Header="Панель администратора">
+                    <Grid x:Name="AdminItemGrid" Height="300">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid AutoGenerateColumns="False" x:Name="AdminGrid"  ItemsSource="{Binding Users}"  Margin="25,25,25,50" Grid.ColumnSpan="4">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Индефиктор" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Email}" Header="Эмаил" Width="100"/>
+                                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Password}" Header="Хэш пароля" Width="100"/>
+                                <!--<DataGridComboBoxColumn x:Name="UserTypesColumn" Binding="{Binding UserType.Type}" Header="Права доступа" Width="100"/>-->
+
+                                <DataGridComboBoxColumn x:Name="UserTypesColumn"  Header="Права доступа"
+     
+                      Width="120"  
+                      DisplayMemberPath="Type"
+                      SelectedValuePath="Type"
+                                             
+                      SelectedItemBinding="{Binding UserType}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="25,250,0,0" Width="Auto">
+                            <Button x:Name="saveUserButton" Content="Сохранить" Click="SaveButton_Click" Width="106" />
+                            <Button x:Name="editUserButton" Content="Редактировать" Click="editUserButton_Click" Width="106" />
+
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+               
+
             </TabControl>
         </Border>
     </Grid>

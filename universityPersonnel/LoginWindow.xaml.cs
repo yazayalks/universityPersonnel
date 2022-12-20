@@ -71,12 +71,15 @@ namespace universityPersonnel
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             var Email = LoginEmailText.Text;
-            var PasswordHash = GetHash(LoginPasswordText.Text);
-            User user = dbContext.User.FirstOrDefault(u => u.Email == Email && u.Password == PasswordHash);
+            var PasswordHash = GetHash(LoginPasswordText.Password);
+            User? user = dbContext.User
+                .Include(x=>x.AccessRights)
+                .Include(x => x.UserType)
+                .FirstOrDefault(u => u.Email == Email && u.Password == PasswordHash);
             if (user != null)
             {
                 var mainWindow = new MainWindow(dbContext, user);
-                mainWindow.ShowDialog();
+                mainWindow.Show();
                 Close();
             }
             else
@@ -92,16 +95,18 @@ namespace universityPersonnel
 
             if (dbContext.User.Count(x => x.Email == Email) == 0)
             {
-                if(RegisterPasswordConfirmText.Text == RegisterPasswordText.Text) { 
-                var PasswordHash = GetHash(RegisterPasswordText.Text);
+                if(RegisterPasswordConfirmText.Password == RegisterPasswordText.Password) { 
+                var PasswordHash = GetHash(RegisterPasswordText.Password);
                 User user = new User();
                 user.Email = Email;
                 user.Password = PasswordHash;
                 user.UserType = UserTypes.Single(x => x.Type == "user");
 
                     for (int i = 0; i < 9; i++) {
-                        AccessRights.Add(AddAccessRight(true, false, false, false, NameForms[i]));
+                        AccessRights.Add(AddAccessRight(false, false, false, false, NameForms[i]));
                     }
+
+                    //user.AccessRights.AddRange(NameForms.Select(x => AddAccessRight(true, false, false, false, x)));
                     
          
 
@@ -118,7 +123,7 @@ namespace universityPersonnel
                 }
 
                 var mainWindow = new MainWindow(dbContext, user);
-                mainWindow.ShowDialog();
+                mainWindow.Show();
                 Close();
                 } else
                 {

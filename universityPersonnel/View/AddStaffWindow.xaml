@@ -5,7 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:universityPersonnel.View"
         mc:Ignorable="d"
-        Title="AddStaffWindow" Height="587" Width="651">
+        Title="AddStaffWindow" Height="587" Width="651"
+         WindowStartupLocation="CenterScreen">
 
     <!-- <Window.DataContext> -->
     <!--     <local:AddStaffWindow/> -->

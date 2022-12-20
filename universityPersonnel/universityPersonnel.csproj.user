@@ -3,6 +3,9 @@
   <PropertyGroup />
   <ItemGroup />
   <ItemGroup>
+    <Compile Update="EditUserWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -11,6 +14,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="EditUserWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
