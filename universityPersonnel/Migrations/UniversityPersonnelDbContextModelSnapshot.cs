@@ -56,6 +56,41 @@ namespace universityPersonnel.Migrations
                     b.ToTable("AcademicTitle");
                 });
 
+            modelBuilder.Entity("universityPersonnel.Models.AccessRight", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Delete")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Edit")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("NameFormId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Read")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Write")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NameFormId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AccessRight");
+                });
+
             modelBuilder.Entity("universityPersonnel.Models.EmploymentBook", b =>
                 {
                     b.Property<int>("Id")
@@ -177,6 +212,23 @@ namespace universityPersonnel.Migrations
                     b.HasIndex("StaffId");
 
                     b.ToTable("Movement");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.NameForm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NameForm");
                 });
 
             modelBuilder.Entity("universityPersonnel.Models.Penaltie", b =>
@@ -379,6 +431,62 @@ namespace universityPersonnel.Migrations
                     b.ToTable("Subdivision");
                 });
 
+            modelBuilder.Entity("universityPersonnel.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("UserTypeId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserTypeId");
+
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.UserType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserType");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.AccessRight", b =>
+                {
+                    b.HasOne("universityPersonnel.Models.NameForm", "NameForm")
+                        .WithMany("NameForms")
+                        .HasForeignKey("NameFormId");
+
+                    b.HasOne("universityPersonnel.Models.User", null)
+                        .WithMany("AccessRights")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("NameForm");
+                });
+
             modelBuilder.Entity("universityPersonnel.Models.EmploymentBook", b =>
                 {
                     b.HasOne("universityPersonnel.Models.Staff", null)
@@ -459,6 +567,15 @@ namespace universityPersonnel.Migrations
                     b.Navigation("Subdivision");
                 });
 
+            modelBuilder.Entity("universityPersonnel.Models.User", b =>
+                {
+                    b.HasOne("universityPersonnel.Models.UserType", "UserType")
+                        .WithMany("UserTypes")
+                        .HasForeignKey("UserTypeId");
+
+                    b.Navigation("UserType");
+                });
+
             modelBuilder.Entity("universityPersonnel.Models.AcademicDegree", b =>
                 {
                     b.Navigation("AcademicDegrees");
@@ -477,6 +594,11 @@ namespace universityPersonnel.Migrations
             modelBuilder.Entity("universityPersonnel.Models.JobTitle", b =>
                 {
                     b.Navigation("JobTitles");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.NameForm", b =>
+                {
+                    b.Navigation("NameForms");
                 });
 
             modelBuilder.Entity("universityPersonnel.Models.PenaltieType", b =>
@@ -505,6 +627,16 @@ namespace universityPersonnel.Migrations
             modelBuilder.Entity("universityPersonnel.Models.Subdivision", b =>
                 {
                     b.Navigation("Subdivisions");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.User", b =>
+                {
+                    b.Navigation("AccessRights");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.UserType", b =>
+                {
+                    b.Navigation("UserTypes");
                 });
 #pragma warning restore 612, 618
         }

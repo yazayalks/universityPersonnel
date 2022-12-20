@@ -28,12 +28,7 @@
 
 
 
-        <!--Create list of enumeration values-->
-        <ObjectDataProvider x:Key="myEnum" MethodName="GetValues"     ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type Type="local:AcademicDegreeTypes"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+
     </Window.Resources>
     <Grid Background="{DynamicResource PrimaryBlueColor}">
         <Border CornerRadius="10"
@@ -87,7 +82,7 @@
                         </DataGrid>
 
                         <StackPanel Orientation="Horizontal" Margin="25,523,522,0"  Width="Auto" Grid.ColumnSpan="3" Height="46" VerticalAlignment="Top">
-                            <Button x:Name="addStaffButton" Content="Добавить" Click="AddStaffButton_Click" Width="106" />
+                            <Button  x:Name="addStaffButton" Content="Добавить" Click="AddStaffButton_Click" Width="106" />
                             <Button x:Name="editStaffButton" Content="Редактировать" Click="EditStaffButton_Click" Width="106" />
                             <Button x:Name="deleteStaffButton" Content="Удалить" Click="DeleteStaffButton_Click" Width="106" />
                         </StackPanel>
@@ -146,9 +141,9 @@
                     </Grid>
                 </TabItem>
 
-              
 
-             
+
+
 
                 <TabItem Header="Должности">
                     <Grid>
@@ -176,12 +171,6 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-
-                
-
-              
-
-            
             </TabControl>
         </Border>
     </Grid>

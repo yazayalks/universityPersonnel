@@ -23,6 +23,10 @@ namespace universityPersonnel
         public DbSet<PreviousVenture> PreviousVenture { get; set; }
         public DbSet<Speciality> Speciality { get; set; }
         public DbSet<Subdivision> Subdivision { get; set; }
+        public DbSet<AccessRight> AccessRight { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<UserType> UserType { get; set; }
+        public DbSet<NameForm> NameForm { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

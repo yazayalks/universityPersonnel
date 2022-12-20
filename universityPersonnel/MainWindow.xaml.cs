@@ -32,15 +32,17 @@ namespace universityPersonnel
 
         public List<PenaltieType> PenaltieTypes { get; set; }
         public List<Penaltie> Penalties { get; set; }
+        public List<AccessRight> AccessRights { get; set; }
         public List<Staff> Staffs { get; set; }
-        public MainWindow()
+        public MainWindow(UniversityPersonnelDbContext dbContext, User user)
         {
-            dbContext = new UniversityPersonnelDbContext();
+            this.dbContext = dbContext;
             Staffs = dbContext.Staff.ToList();
+           // AccessRights = dbContext.AccessRight.Include(x => x.User == user).ToList();
 
             this.DataContext = this;
             InitializeComponent();
-       
+            var a = user;
 
             RefreshStaff();
             RefreshSubdivision();
