@@ -75,10 +75,15 @@ namespace universityPersonnel.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("StaffId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("Start")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("EmploymentBook");
                 });
@@ -100,9 +105,14 @@ namespace universityPersonnel.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("StaffId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EncouragementTypeId");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("Encouragement");
                 });
@@ -159,7 +169,12 @@ namespace universityPersonnel.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("StaffId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("Movement");
                 });
@@ -181,9 +196,14 @@ namespace universityPersonnel.Migrations
                     b.Property<int?>("PenaltieTypeId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("StaffId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PenaltieTypeId");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("Penaltie");
                 });
@@ -225,7 +245,12 @@ namespace universityPersonnel.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("StaffId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("PreviousVenture");
                 });
@@ -271,12 +296,6 @@ namespace universityPersonnel.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("EmploymentBookId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("EncouragementId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("text");
@@ -292,9 +311,6 @@ namespace universityPersonnel.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("MovementId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -305,9 +321,6 @@ namespace universityPersonnel.Migrations
                     b.Property<string>("PassportIssuedBy")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int?>("PenaltieId")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -320,9 +333,6 @@ namespace universityPersonnel.Migrations
                     b.Property<string>("PlaceBirth")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int?>("PreviousVentureId")
-                        .HasColumnType("integer");
 
                     b.Property<int?>("SpecialityId")
                         .HasColumnType("integer");
@@ -343,17 +353,7 @@ namespace universityPersonnel.Migrations
 
                     b.HasIndex("AcademicTitleId");
 
-                    b.HasIndex("EmploymentBookId");
-
-                    b.HasIndex("EncouragementId");
-
                     b.HasIndex("JobTitleId");
-
-                    b.HasIndex("MovementId");
-
-                    b.HasIndex("PenaltieId");
-
-                    b.HasIndex("PreviousVentureId");
 
                     b.HasIndex("SpecialityId");
 
@@ -379,18 +379,51 @@ namespace universityPersonnel.Migrations
                     b.ToTable("Subdivision");
                 });
 
+            modelBuilder.Entity("universityPersonnel.Models.EmploymentBook", b =>
+                {
+                    b.HasOne("universityPersonnel.Models.Staff", null)
+                        .WithMany("EmploymentBooks")
+                        .HasForeignKey("StaffId");
+                });
+
             modelBuilder.Entity("universityPersonnel.Models.Encouragement", b =>
                 {
-                    b.HasOne("universityPersonnel.Models.EncouragementType", null)
+                    b.HasOne("universityPersonnel.Models.EncouragementType", "EncouragementType")
                         .WithMany("EncouragementTypes")
                         .HasForeignKey("EncouragementTypeId");
+
+                    b.HasOne("universityPersonnel.Models.Staff", null)
+                        .WithMany("Encouragements")
+                        .HasForeignKey("StaffId");
+
+                    b.Navigation("EncouragementType");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.Movement", b =>
+                {
+                    b.HasOne("universityPersonnel.Models.Staff", null)
+                        .WithMany("Movements")
+                        .HasForeignKey("StaffId");
                 });
 
             modelBuilder.Entity("universityPersonnel.Models.Penaltie", b =>
                 {
-                    b.HasOne("universityPersonnel.Models.PenaltieType", null)
+                    b.HasOne("universityPersonnel.Models.PenaltieType", "PenaltieType")
                         .WithMany("PenaltieTypes")
                         .HasForeignKey("PenaltieTypeId");
+
+                    b.HasOne("universityPersonnel.Models.Staff", null)
+                        .WithMany("Penalties")
+                        .HasForeignKey("StaffId");
+
+                    b.Navigation("PenaltieType");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.PreviousVenture", b =>
+                {
+                    b.HasOne("universityPersonnel.Models.Staff", null)
+                        .WithMany("PreviousVentures")
+                        .HasForeignKey("StaffId");
                 });
 
             modelBuilder.Entity("universityPersonnel.Models.Staff", b =>
@@ -403,29 +436,9 @@ namespace universityPersonnel.Migrations
                         .WithMany("AcademicTitles")
                         .HasForeignKey("AcademicTitleId");
 
-                    b.HasOne("universityPersonnel.Models.EmploymentBook", "EmploymentBook")
-                        .WithMany("EmploymentBooks")
-                        .HasForeignKey("EmploymentBookId");
-
-                    b.HasOne("universityPersonnel.Models.Encouragement", "Encouragement")
-                        .WithMany("Encouragements")
-                        .HasForeignKey("EncouragementId");
-
                     b.HasOne("universityPersonnel.Models.JobTitle", "JobTitle")
                         .WithMany("JobTitles")
                         .HasForeignKey("JobTitleId");
-
-                    b.HasOne("universityPersonnel.Models.Movement", "Movement")
-                        .WithMany("Movements")
-                        .HasForeignKey("MovementId");
-
-                    b.HasOne("universityPersonnel.Models.Penaltie", "Penaltie")
-                        .WithMany("Penalties")
-                        .HasForeignKey("PenaltieId");
-
-                    b.HasOne("universityPersonnel.Models.PreviousVenture", "PreviousVenture")
-                        .WithMany("PreviousVentures")
-                        .HasForeignKey("PreviousVentureId");
 
                     b.HasOne("universityPersonnel.Models.Speciality", "Speciality")
                         .WithMany("Specialties")
@@ -439,17 +452,7 @@ namespace universityPersonnel.Migrations
 
                     b.Navigation("AcademicTitle");
 
-                    b.Navigation("EmploymentBook");
-
-                    b.Navigation("Encouragement");
-
                     b.Navigation("JobTitle");
-
-                    b.Navigation("Movement");
-
-                    b.Navigation("Penaltie");
-
-                    b.Navigation("PreviousVenture");
 
                     b.Navigation("Speciality");
 
@@ -466,16 +469,6 @@ namespace universityPersonnel.Migrations
                     b.Navigation("AcademicTitles");
                 });
 
-            modelBuilder.Entity("universityPersonnel.Models.EmploymentBook", b =>
-                {
-                    b.Navigation("EmploymentBooks");
-                });
-
-            modelBuilder.Entity("universityPersonnel.Models.Encouragement", b =>
-                {
-                    b.Navigation("Encouragements");
-                });
-
             modelBuilder.Entity("universityPersonnel.Models.EncouragementType", b =>
                 {
                     b.Navigation("EncouragementTypes");
@@ -486,29 +479,27 @@ namespace universityPersonnel.Migrations
                     b.Navigation("JobTitles");
                 });
 
-            modelBuilder.Entity("universityPersonnel.Models.Movement", b =>
-                {
-                    b.Navigation("Movements");
-                });
-
-            modelBuilder.Entity("universityPersonnel.Models.Penaltie", b =>
-                {
-                    b.Navigation("Penalties");
-                });
-
             modelBuilder.Entity("universityPersonnel.Models.PenaltieType", b =>
                 {
                     b.Navigation("PenaltieTypes");
                 });
 
-            modelBuilder.Entity("universityPersonnel.Models.PreviousVenture", b =>
-                {
-                    b.Navigation("PreviousVentures");
-                });
-
             modelBuilder.Entity("universityPersonnel.Models.Speciality", b =>
                 {
                     b.Navigation("Specialties");
+                });
+
+            modelBuilder.Entity("universityPersonnel.Models.Staff", b =>
+                {
+                    b.Navigation("EmploymentBooks");
+
+                    b.Navigation("Encouragements");
+
+                    b.Navigation("Movements");
+
+                    b.Navigation("Penalties");
+
+                    b.Navigation("PreviousVentures");
                 });
 
             modelBuilder.Entity("universityPersonnel.Models.Subdivision", b =>

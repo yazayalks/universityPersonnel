@@ -15,7 +15,7 @@ namespace universityPersonnel.Models
         public DateTime End { get; set; }
         public string JobTitle { get; set; }
         public string ReasonDismissal { get; set; }
-        public List<Staff?> EmploymentBooks { get; set; }
+
     }
     
 }

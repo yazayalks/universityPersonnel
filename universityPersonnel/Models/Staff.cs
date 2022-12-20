@@ -14,9 +14,7 @@ namespace universityPersonnel.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Middlename { get; set; }
-
         public string Gender { get; set; }
-       
         public string PlaceBirth { get; set; }
         public string HomeAddress { get; set; }
         public string Phone { get; set; }
@@ -30,14 +28,15 @@ namespace universityPersonnel.Models
         public DateTime YearGraduation { get; set; }
         public AcademicDegree? AcademicDegree { get; set; }
         public AcademicTitle? AcademicTitle { get; set; }
-        public Encouragement? Encouragement { get; set; }
+
         public JobTitle? JobTitle { get; set; }
         public Speciality? Speciality { get; set; }
         public Subdivision? Subdivision { get; set; }
-        public Movement? Movement { get; set; }
-        public Penaltie? Penaltie { get; set; }
-        public PreviousVenture? PreviousVenture { get; set; }
-        public EmploymentBook? EmploymentBook { get; set; }
+        public List<Penaltie> Penalties { get; set; }
+        public List<EmploymentBook> EmploymentBooks { get; set; }
+        public List<Encouragement> Encouragements { get; set; }
+        public List<Movement> Movements { get; set; }
+        public List<PreviousVenture> PreviousVentures { get; set; }
 
 
 

@@ -24,110 +24,65 @@ namespace universityPersonnel
     /// 
     public partial class MainWindow : Window
     {
-        UniversityPersonnelDbContext db;
-
+        UniversityPersonnelDbContext dbContext;
         public Penaltie Penaltie { get; set; }
         public Encouragement Encouragement { get; set; }
-        public List<PenaltieType> PenaltieTypes { get; set; }
+       
         public List<EncouragementType> EncouragementTypes { get; set; }
+
+        public List<PenaltieType> PenaltieTypes { get; set; }
         public List<Penaltie> Penalties { get; set; }
+        public List<Staff> Staffs { get; set; }
         public MainWindow()
         {
-            db = new UniversityPersonnelDbContext();
-            PenaltieTypes = db.PenaltieType.ToList();
-            EncouragementTypes = db.EncouragementType.ToList();
-            Penalties = db.Penaltie.Include(x => x.PenaltieType).ToList();
+            dbContext = new UniversityPersonnelDbContext();
+            Staffs = dbContext.Staff.ToList();
 
             this.DataContext = this;
             InitializeComponent();
-            PenaltieTypesColumn.ItemsSource = PenaltieTypes;
+       
 
             RefreshStaff();
             RefreshSubdivision();
             RefreshSpeciality();
-            //RefreshPenaltie();
             RefreshJobTitle();
-            RefreshMovement();
-            RefreshEmploymentBook();
-            RefreshEncouragement();
-         
 
-            SubdivisionGrid.ItemsSource = db.Subdivision.Local.ToBindingList(); // устанавливаем привязку к кэшу
-            SpecialityGrid.ItemsSource = db.Speciality.Local.ToBindingList(); // устанавливаем привязку к кэшу
-            PreviousVentureGrid.ItemsSource = db.PreviousVenture.Local.ToBindingList(); // устанавливаем привязку к кэшу
-            //PenaltieGrid.ItemsSource = db.Penaltie.Local.ToBindingList(); // устанавливаем привязку к кэшу
-            JobTitleGrid.ItemsSource = db.JobTitle.Local.ToBindingList(); // устанавливаем привязку к кэшу
-            MovementGrid.ItemsSource = db.Movement.Local.ToBindingList(); // устанавливаем привязку к кэшу
-            EmploymentBookGrid.ItemsSource = db.EmploymentBook.Local.ToBindingList(); // устанавливаем привязку к кэшу
-            EncouragementGrid.ItemsSource = db.Encouragement.Local.ToBindingList(); // устанавливаем привязку к кэшу
+            
+            SubdivisionGrid.ItemsSource = dbContext.Subdivision.Local.ToBindingList(); // устанавливаем привязку к кэшу
+            SpecialityGrid.ItemsSource = dbContext.Speciality.Local.ToBindingList(); // устанавливаем привязку к кэшу
+            JobTitleGrid.ItemsSource = dbContext.JobTitle.Local.ToBindingList(); // устанавливаем привязку к кэшу
 
             this.Closing += MainWindow_Closing;
 
 
         }
-
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            db.Dispose();
+            dbContext.Dispose();
         }
 
-   
-        private void SaveSubdivisionButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
 
-            db.SaveChanges();
+            dbContext.SaveChanges();
         }
-        private void SaveSpecialityButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteStaffButton_Click(object sender, RoutedEventArgs e)
         {
-
-            db.SaveChanges();
-        }
-        private void SavePreviousVentureButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            db.SaveChanges();
-        }
-        private void SavePenaltieButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            db.SaveChanges();
-        }
-        private void SaveJobTitleButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            db.SaveChanges();
-        }
-        private void SaveMovementButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            db.SaveChanges();
-        }
-        private void SaveEmploymentBookButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            db.SaveChanges();
-        }
-        private void SaveEncouragementButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            db.SaveChanges();
-        }
-
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (staffGrid.SelectedItems.Count > 0)
+            if (StaffGrid.SelectedItems.Count > 0)
             {
-                for (int i = 0; i < staffGrid.SelectedItems.Count; i++)
+                for (int i = 0; i < StaffGrid.SelectedItems.Count; i++)
                 {
-                    Staff staff = staffGrid.SelectedItems[i] as Staff;
+                    Staff staff = StaffGrid.SelectedItems[i] as Staff;
                     if (staff != null)
                     {
-                        db.Staff.Remove(staff);
+                        Staffs.Remove(staff);
+                        dbContext.Staff.Remove(staff);
+                        StaffGrid.Items.Refresh();
                     }
                 }
             }
 
-            db.SaveChanges();
+            dbContext.SaveChanges();
         }
         private void DeleteSubdivisionButton_Click(object sender, RoutedEventArgs e)
         {
@@ -138,95 +93,14 @@ namespace universityPersonnel
                     Subdivision subdivision = SubdivisionGrid.SelectedItems[i] as Subdivision;
                     if (subdivision != null)
                     {
-                        db.Subdivision.Remove(subdivision);
+                        dbContext.Subdivision.Remove(subdivision);
                     }
                 }
             }
 
-            db.SaveChanges();
-        } 
-        private void DeleteEncouragementButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (EncouragementGrid.SelectedItems.Count > 0)
-            {
-                for (int i = 0; i < EncouragementGrid.SelectedItems.Count; i++)
-                {
-                    Encouragement encouragement = EncouragementGrid.SelectedItems[i] as Encouragement;
-                    if (encouragement != null)
-                    {
-                        db.Encouragement.Remove(encouragement);
-                    }
-                }
-            }
-
-            db.SaveChanges();
+            dbContext.SaveChanges();
         }
 
-        private void DeletePenaltieButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (PenaltieGrid.SelectedItems.Count > 0)
-            {
-                for (int i = 0; i < PenaltieGrid.SelectedItems.Count; i++)
-                {
-                    Penaltie penaltie = PenaltieGrid.SelectedItems[i] as Penaltie;
-                    if (penaltie != null)
-                    {
-                        db.Penaltie.Remove(penaltie);
-                    }
-                }
-            }
-
-            db.SaveChanges();
-        }
-        private void DeleteEmploymentBookButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (PenaltieGrid.SelectedItems.Count > 0)
-            {
-                for (int i = 0; i < PenaltieGrid.SelectedItems.Count; i++)
-                {
-                    Penaltie penaltie = PenaltieGrid.SelectedItems[i] as Penaltie;
-                    if (penaltie != null)
-                    {
-                        db.Penaltie.Remove(penaltie);
-                    }
-                }
-            }
-
-            db.SaveChanges();
-        }
-        private void DeleteMovementButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (MovementGrid.SelectedItems.Count > 0)
-            {
-                for (int i = 0; i < MovementGrid.SelectedItems.Count; i++)
-                {
-                    Movement movement = MovementGrid.SelectedItems[i] as Movement;
-                    if (movement != null)
-                    {
-                        db.Movement.Remove(movement);
-                    }
-                }
-            }
-
-            db.SaveChanges();
-        }
-
-        private void DeletePreviousVentureButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (PreviousVentureGrid.SelectedItems.Count > 0)
-            {
-                for (int i = 0; i < PreviousVentureGrid.SelectedItems.Count; i++)
-                {
-                    PreviousVenture previousVenture = PreviousVentureGrid.SelectedItems[i] as PreviousVenture;
-                    if (previousVenture != null)
-                    {
-                        db.PreviousVenture.Remove(previousVenture);
-                    }
-                }
-            }
-
-            db.SaveChanges();
-        }
         private void DeleteJobTitleButton_Click(object sender, RoutedEventArgs e)
         {
             if (JobTitleGrid.SelectedItems.Count > 0)
@@ -236,12 +110,12 @@ namespace universityPersonnel
                     JobTitle jobTitle = JobTitleGrid.SelectedItems[i] as JobTitle;
                     if (jobTitle != null)
                     {
-                        db.JobTitle.Remove(jobTitle);
+                        dbContext.JobTitle.Remove(jobTitle);
                     }
                 }
             }
 
-            db.SaveChanges();
+            dbContext.SaveChanges();
         }
 
         private void DeleteSpecialityButton_Click(object sender, RoutedEventArgs e)
@@ -253,89 +127,67 @@ namespace universityPersonnel
                     Speciality speciality = SpecialityGrid.SelectedItems[i] as Speciality;
                     if (speciality != null)
                     {
-                        db.Speciality.Remove(speciality);
+                        dbContext.Speciality.Remove(speciality);
                     }
                 }
             }
 
-            db.SaveChanges();
-        }
-
-
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
-
-        private void StaffGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            dbContext.SaveChanges();
         }
 
         private void RefreshStaff()
         {
-            staffGrid.ItemsSource = db.Staff.Include(x => x.AcademicDegree).Include(x => x.AcademicTitle).Include(x => x.Encouragement).Include(x => x.JobTitle).Include(x => x.Speciality).Include(x => x.Subdivision).Include(x => x.Movement).Include(x => x.Penaltie).Include(x => x.PreviousVenture).Include(x => x.EmploymentBook).ToList();
-            staffGrid.Items.Refresh();
-        }
-
-        private void RefreshPenaltie()
-        {
-            PenaltieGrid.ItemsSource = db.Penaltie.Include(x => x.PenaltieType).ToList();
-            PenaltieGrid.Items.Refresh();
+            StaffGrid.ItemsSource = dbContext.Staff
+                .AsSplitQuery()
+                .Include(x => x.AcademicDegree)
+                .Include(x => x.AcademicTitle)
+                .Include(x => x.JobTitle)
+                .Include(x => x.Speciality)
+                .Include(x => x.Subdivision)
+                .Include(x => x.PreviousVentures)
+                .Include(x => x.EmploymentBooks)
+                .Include(x => x.Movements)  
+                .Include(x => x.Encouragements)
+                .Include(x => x.Penalties)
+                .ToList();
+            StaffGrid.Items.Refresh();
         }
 
         private void RefreshSubdivision()
         {
-            SubdivisionGrid.ItemsSource = db.Subdivision.ToList();
+            SubdivisionGrid.ItemsSource = dbContext.Subdivision.ToList();
             SubdivisionGrid.Items.Refresh();
         }
 
-        private void RefreshEmploymentBook()
-        {
-            EmploymentBookGrid.ItemsSource = db.EmploymentBook.ToList();
-            EmploymentBookGrid.Items.Refresh();
-        }
+
         private void RefreshJobTitle()
         {
-            JobTitleGrid.ItemsSource = db.JobTitle.ToList();
+            JobTitleGrid.ItemsSource = dbContext.JobTitle.ToList();
             JobTitleGrid.Items.Refresh();
-        }  
-        private void RefreshEncouragement()
-        {
-            EncouragementGrid.ItemsSource = db.Encouragement.Include(x => x.EncouragementType).ToList();
-            EncouragementGrid.Items.Refresh();
         }
+
         private void RefreshSpeciality()
         {
-            SpecialityGrid.ItemsSource = db.Speciality.ToList();
+            SpecialityGrid.ItemsSource = dbContext.Speciality.ToList();
             SpecialityGrid.Items.Refresh();
-        }  
-      private void RefreshMovement()
+        }
+
+        private void AddStaffButton_Click(object sender, RoutedEventArgs e)
         {
-            MovementGrid.ItemsSource = db.Movement.ToList();
-            MovementGrid.Items.Refresh();
-        }  
-      
-        private void addStaffButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddStaffWindow addStaffWindow = new AddStaffWindow(db);
+            AddStaffWindow addStaffWindow = new AddStaffWindow(dbContext);
             addStaffWindow.ShowDialog();
             RefreshStaff();
         }
-   
 
-
-        private void editStaffButton_Click(object sender, RoutedEventArgs e)
+        private void EditStaffButton_Click(object sender, RoutedEventArgs e)
         {
-            int count = staffGrid.SelectedItems.Count;
+            int count = StaffGrid.SelectedItems.Count;
             if (count == 1)
             {
-                var editStaffWindow = new EditStaffWindow((Staff)staffGrid.SelectedItems[0], db);
+                var editStaffWindow = new EditStaffWindow((Staff)StaffGrid.SelectedItems[0], dbContext);
                 editStaffWindow.ShowDialog();
                 RefreshStaff();
             }
         }
-
-  
-
     }
 }

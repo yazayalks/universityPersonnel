@@ -18,7 +18,7 @@ public partial class AddStaffWindow : Window
     public BitmapImage BitmapPhoto { get; set; }
   
     public List<string> Genders { get; set; } = new() { "М", "Ж" };
-    public List<string> Educations { get; set; } = new() { "Среднее", "Высшее" };
+    public List<string> Educations { get; set; } = new() { "Нет образования", "Общее", "Среднее", "Высшее"};
     public List<AcademicDegree> AcademicDegrees { get; set; }
 
     public List<AcademicTitle> AcademicTitles { get; set; }
@@ -33,8 +33,6 @@ public partial class AddStaffWindow : Window
     public AddStaffWindow(UniversityPersonnelDbContext dbContext)
     {
         this.dbContext = dbContext;
-        //byte[] binaryData = Convert.FromBase64String(Staff.Photo);
-      
 
         AcademicDegrees = dbContext.AcademicDegree.ToList();
         AcademicTitles = dbContext.AcademicTitle.ToList();
@@ -88,7 +86,6 @@ public partial class AddStaffWindow : Window
             string base64ImageRepresentation = Convert.ToBase64String(imageArray);
             Staff.Photo = base64ImageRepresentation;
             LoadPhoto(Staff.Photo ?? ProfilePhoto.img);
-            //textBox1.Text = filename;
         }
 
 
@@ -99,10 +96,7 @@ public partial class AddStaffWindow : Window
         byte[] binaryData = Convert.FromBase64String(base64);
         BitmapPhoto = new BitmapImage();
         BitmapPhoto.BeginInit();
-        //BitmapPhoto.CacheOption = BitmapCacheOption.OnLoad;
-        //BitmapPhoto.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
         BitmapPhoto.StreamSource = new MemoryStream(binaryData);
-        
         BitmapPhoto.EndInit();
         PhotoImage.Source = BitmapPhoto;
     }

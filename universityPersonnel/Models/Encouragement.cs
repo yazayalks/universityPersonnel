@@ -13,8 +13,6 @@ namespace universityPersonnel.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public int Order { get; set; }
-      
-        public List<Staff?> Encouragements { get; set; }
         public EncouragementType? EncouragementType { get; set; }
 
     }

@@ -15,6 +15,5 @@ namespace universityPersonnel.Models
         public string Cause { get; set; }
         public DateTime Date { get; set; }
         public int Order { get; set; }
-        public List<Staff?> Movements { get; set; }
     }
 }

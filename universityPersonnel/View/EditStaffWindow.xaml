@@ -5,77 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:universityPersonnel"
         mc:Ignorable="d"
-        Title="EditStaffWindow" Height="450" Width="800">
+        Title="EditStaffWindow" Height="800" Width="1227">
     <StackPanel Orientation="Horizontal">
 
-        <StackPanel>
+        <StackPanel Width="287">
             <StackPanel Orientation="Horizontal">
-                <Label Content="Фамилия" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="62"/>
+                <Label Content="Фамилия" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.Surname}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Имя" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="62"/>
+                <Label Content="Имя" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.Name}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Отчество" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="62"/>
+                <Label Content="Отчество" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.Middlename}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Пол" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="62"/>
+                <Label Content="Пол" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <ComboBox HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" ItemsSource="{Binding Path=Genders}" SelectedItem="{Binding Path=Staff.Gender}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Место рождения" HorizontalAlignment="Left" VerticalAlignment="Center" Width="127"/>
+                <Label Content="Место рождения" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
                 <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.PlaceBirth}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Домашний адрес" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="126"/>
+                <Label Content="Домашний адрес" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.HomeAddress}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Телефон" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="126"/>
+                <Label Content="Телефон" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.Phone}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Образование" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="126"/>
+                <Label Content="Образование" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <ComboBox HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" ItemsSource="{Binding Path=Educations}" SelectedItem="{Binding Path=Staff.Education}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Серия номер паспорта" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="152"/>
+                <Label Content="Серия номер паспорта" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.PassportId}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Кем выдан паспорт" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="152"/>
+                <Label Content="Кем выдан паспорт" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.PassportIssuedBy}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Дата получения" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="152"/>
+                <Label Content="Дата получения" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <DatePicker HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateIssuePassport}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Дата рождения" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="152"/>
+                <Label Content="Дата рождения" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
                 <DatePicker HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateBirth}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Год окончания" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <Label Content="Год окончания" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
                 <DatePicker HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.YearGraduation}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Ученая степень" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <Label Content="Ученая степень" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
                 <ComboBox HorizontalAlignment="Left"  
                       VerticalAlignment="Center"
                       Width="120"  
@@ -85,7 +85,7 @@
                       SelectedItem="{Binding Path=Staff.AcademicDegree}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Ученое звание" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <Label Content="Ученое звание" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
                 <ComboBox HorizontalAlignment="Left"  
                       VerticalAlignment="Center"
                       Width="120"  
@@ -95,7 +95,7 @@
                       SelectedItem="{Binding Path=Staff.AcademicTitle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Должность" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <Label Content="Должность" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
                 <ComboBox HorizontalAlignment="Left"  
                       VerticalAlignment="Center"
                       Width="120"  
@@ -105,7 +105,7 @@
                       SelectedItem="{Binding Path=Staff.JobTitle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Специальность" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <Label Content="Специальность" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
                 <ComboBox HorizontalAlignment="Left"  
                       VerticalAlignment="Center"
                       Width="120"  
@@ -115,7 +115,7 @@
                       SelectedItem="{Binding Path=Staff.Speciality}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Подразделение" HorizontalAlignment="Left" VerticalAlignment="Center" Width="152"/>
+                <Label Content="Подразделение" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
                 <ComboBox HorizontalAlignment="Left"  
                       VerticalAlignment="Center"
                       Width="120"  
@@ -125,18 +125,186 @@
                       SelectedItem="{Binding Path=Staff.Subdivision}"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Сохранить" Click="saveButton_Click" Width="106" />
-                <Button Content="Выбрать фото" Click="photoButton_Click" Width="106" />
+            <StackPanel Margin="25,25,25,25"  Orientation="Horizontal" HorizontalAlignment="Center" Width="Auto" Grid.ColumnSpan="2" Height="40" VerticalAlignment="Top">
+                <Button Content="Сохранить" Click="saveButton_Click" Width="100" Margin="5,5,5,5"/>
+                <Button Content="Выбрать фото" Click="photoButton_Click" Width="100" Margin="5,5,5,5"/>
             </StackPanel>
 
+
+        </StackPanel>
+
+        <StackPanel>
+            <Grid Width="368" Height="358">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="39*"/>
+                    <ColumnDefinition Width="340*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Фото" Grid.ColumnSpan="2"/>
+                <Image x:Name="PhotoImage" Source="{Binding BitmapPhoto}" Width="300" Height="300" Margin="34,0,0,0" MaxWidth="300" MaxHeight="300" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+            </Grid>
         </StackPanel>
         <StackPanel>
-            <Label>
-                Фото
-            </Label>
-            <Image x:Name="PhotoImage"     Source="{Binding Path=BitmapPhoto}" Width="100" Height="100"/>
+            <TabControl Height="288" Width="544">
+                <TabItem Header="Взыскания">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="PenaltieGrid" ItemsSource="{Binding Penalties}" Height="220" VerticalAlignment="Center" Margin="10,0,10,0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Order}" Header="Договор" Width="100"/>
+                                <!--<DataGridTextColumn Binding="{Binding PenaltieType.Name}" Header="Тип" Width="100"/>-->
+                                <!--TODO-->
+                                <DataGridComboBoxColumn x:Name="PenaltieTypesColumn"  Header="Тип"
+     
+                      Width="120"  
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Name"
+                                             
+                      SelectedItemBinding="{Binding PenaltieType}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal"  Width="Auto" Grid.Row="1">
+                            <Button x:Name="deletePenaltieVentureButton" Content="Удалить" Click="DeletePenaltieButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem  Header="Перемещения">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="MovementGrid"   ItemsSource="{Binding Movements}" Height="220" VerticalAlignment="Center" Margin="10,0,10,0">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Cause}" Header="Название" />
+                                <DataGridTextColumn  Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" />
+                                <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
+
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="Auto" Grid.Row="1">
+                            <Button x:Name="deleteMovementButton" Content="Удалить" Click="DeleteMovementButton_Click" Width="106" />
+                        </StackPanel>
+
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Поощрения">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="EncouragementGrid" ItemsSource="{Binding Encouragements}" Height="220" VerticalAlignment="Center" Margin="10,0,10,0">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" />
+                                <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
+                                <DataGridComboBoxColumn  Header="Поощрение"  x:Name="EncouragementTypesColumn"
+     
+                      Width="120"  
+         
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Name"
+                                                         
+                      SelectedItemBinding="{Binding EncouragementType}">
+
+                                </DataGridComboBoxColumn>
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="Auto" Grid.Row="1">
+
+                            <Button x:Name="deleteEncouragementButton" Content="Удалить" Click="DeleteEncouragementButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Трудовая книжка">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="EmploymentBookGrid" ItemsSource="{Binding EmploymentBooks}" Height="220" VerticalAlignment="Center" Margin="10,0,10,0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding JobTitle}" Header="Должность" />
+                                <DataGridTextColumn Binding="{Binding Start, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Начало работы" />
+                                <DataGridTextColumn Binding="{Binding End, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Конец работы" />
+                                <DataGridTextColumn Binding="{Binding ReasonDismissal}" Header="Причина увольнения" />
+
+
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="Auto" Grid.Row="1">
+                            <Button x:Name="deleteEmploymentBookButton" Content="Удалить" Click="DeleteEmploymentBookButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Предыдущее место работы">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="397*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="PreviousVentureGrid"  ItemsSource="{Binding PreviousVentures}" Height="220" VerticalAlignment="Center" Margin="10,0,10,0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Address}" Header="Адрес" Width="200"/>
+                                <DataGridTextColumn Binding="{Binding Phone}" Header="Телефон" Width="100"/>
+
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="Auto" Grid.Row="1">
+                            <Button x:Name="deletePreviousVentureButton" Content="Удалить" Click="DeletePreviousVentureButton_Click" Width="106" />
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+            </TabControl>
         </StackPanel>
     </StackPanel>
 </Window>
