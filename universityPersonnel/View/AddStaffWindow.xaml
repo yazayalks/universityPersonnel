@@ -66,17 +66,17 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Дата получения" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
-                <DatePicker HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateIssuePassport}"/>
+                <DatePicker HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateIssuePassport, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Дата рождения" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
-                <DatePicker HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateBirth}"/>
+                <DatePicker HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateBirth, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Год окончания" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
-                <DatePicker HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.YearGraduation}"/>
+                <DatePicker HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.YearGraduation, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">

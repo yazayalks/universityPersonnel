@@ -82,7 +82,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
 
-                        <StackPanel Orientation="Horizontal" Margin="25,523,304,0"  Width="Auto" Grid.ColumnSpan="3" Height="46" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" Margin="25,523,25,0"  Width="Auto" Grid.ColumnSpan="3" Height="46" VerticalAlignment="Top">
                             <Button x:Name="addStaffButton" Content="Добавить" Click="AddStaffButton_Click" Width="106" />
                             <Button x:Name="editStaffButton" Content="Редактировать" Click="EditStaffButton_Click" Width="106" />
                             <Button x:Name="deleteStaffButton" Content="Удалить" Click="DeleteStaffButton_Click" Width="106" />
@@ -90,6 +90,7 @@
                             <Label Content="Поиск"  VerticalAlignment="Center" Width="50"/>
                             <TextBox x:Name="searchTextBox"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center"  Width="120" />
                             <Button x:Name="searchStaffButton" Content="Искать" Click="searchStaffButton_Click" Width="106" />
+                            <Button x:Name="exportExcelStaffButton" Content="Экспорт" Click="exportExcelStaffButton_Click" Width="106" />
                         </StackPanel>
 
 

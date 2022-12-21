@@ -1,6 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Aspose.Cells;
+using ClosedXML.Excel;
+using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -338,5 +342,32 @@ namespace universityPersonnel
             }
         }
 
+        private void exportExcelStaffButton_Click(object sender, RoutedEventArgs e)
+        {
+        
+            var l = new List<Staff>((IEnumerable<Staff>)StaffGrid.ItemsSource);
+
+            foreach (var item in l)
+            {
+                item.Photo = string.Empty;
+            }
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(Common.ToDataTable(l));
+               
+                    Stream streamF = File.Create("export.xlsx");
+                    wb.SaveAs(streamF);
+                streamF.Close();
+
+
+            }
+
+
+            Workbook workbook = new Workbook("export.xlsx");
+            workbook.Save("export.docx", SaveFormat.Docx);
+
+            MessageBox.Show("Успешно");
+        }
     }
 }

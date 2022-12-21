@@ -62,17 +62,17 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Дата получения" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
-                <DatePicker HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateIssuePassport}"/>
+                <DatePicker HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateIssuePassport, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Дата рождения" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160"/>
-                <DatePicker HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateBirth}"/>
+                <DatePicker HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.DateBirth, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Год окончания" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160"/>
-                <DatePicker HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.YearGraduation}"/>
+                <DatePicker HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" Text="{Binding Path=Staff.YearGraduation, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -160,7 +160,7 @@
 
                         <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="PenaltieGrid" ItemsSource="{Binding Penalties}" Height="220" VerticalAlignment="Center" Margin="10,0,10,0">
                             <DataGrid.Columns>
-                                <DataGridTextColumn  Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" Width="100"/>
+                                <DataGridTextColumn  Binding="{Binding Date}" Header="Дата" Width="100"/>
                                 <DataGridTextColumn Binding="{Binding Order}" Header="Договор" Width="100"/>
                                 <!--<DataGridTextColumn Binding="{Binding PenaltieType.Name}" Header="Тип" Width="100"/>-->
                                 <!--TODO-->
@@ -193,7 +193,7 @@
 
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Cause}" Header="Название" />
-                                <DataGridTextColumn  Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" />
+                                <DataGridTextColumn  Binding="{Binding Date}" Header="Дата" />
                                 <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
 
 
@@ -223,7 +223,7 @@
 
                             <DataGrid.Columns>
 
-                                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Дата" />
+                                <DataGridTextColumn Binding="{Binding Date}" Header="Дата" />
                                 <DataGridTextColumn Binding="{Binding Order}" Header="Договор" />
                                 <DataGridComboBoxColumn Header="Поощрение"  x:Name="EncouragementTypesColumn"
      
@@ -261,8 +261,8 @@
                         <DataGrid IsReadOnly="False" AutoGenerateColumns="False" x:Name="EmploymentBookGrid" ItemsSource="{Binding EmploymentBooks}" Height="220" VerticalAlignment="Center" Margin="10,0,10,0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding JobTitle}" Header="Должность" />
-                                <DataGridTextColumn Binding="{Binding Start, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Начало работы" />
-                                <DataGridTextColumn Binding="{Binding End, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Конец работы" />
+                                <DataGridTextColumn Binding="{Binding Start}" Header="Начало работы" />
+                                <DataGridTextColumn Binding="{Binding End}" Header="Конец работы" />
                                 <DataGridTextColumn Binding="{Binding ReasonDismissal}" Header="Причина увольнения" />
 
 

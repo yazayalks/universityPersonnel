@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,22 @@ namespace universityPersonnel
         {
             //optionsBuilder.UseInMemoryDatabase("db");
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=universityPersonne;Username=postgres;Password=6969");
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
+
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            configurationBuilder.Properties<DateTime>().HaveConversion<UtcValueConverter>();
+            configurationBuilder.Properties<DateTime?>().HaveConversion<UtcValueConverter>();
+            base.ConfigureConventions(configurationBuilder);
+        }
+
+        private class UtcValueConverter : ValueConverter<DateTime, DateTime>
+        {
+            public UtcValueConverter()
+                : base(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc))
+            {
+            }
         }
 
     }
